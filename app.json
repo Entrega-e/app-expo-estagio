@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Entregaê",
+    "slug": "entregae-entregador",
+    "owner": "entregae",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#f0f7f4"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logotipo.png",
+        "backgroundColor": "#f0f7f4"
+      },
+      "package": "entregae.entregador"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
