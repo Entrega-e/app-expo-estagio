@@ -5,7 +5,7 @@ const NAVBAR_LOGO = "../../../assets/entregae_branca.png";
 const Navbar = () => {
   return (
     <Wrapper>
-      <StyledImage source={require(NAVBAR_LOGO)} />
+      <StyledImage source={require("../../../assets/entregae_branca.png")} />
     </Wrapper>
   );
 };

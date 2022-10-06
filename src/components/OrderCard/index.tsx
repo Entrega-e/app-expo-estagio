@@ -37,13 +37,25 @@ export type OrderCardProps = {
   orderNumber: number;
   orderStatus: string;
   variant?: VariantTypes;
+  orderImage: string;
 };
+
+const getCardInfo = () => {
+  let list = localStorage.getItem('infoCard');
+
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return [];
+  }
+}
 
 const OrderCard = ({
   orderId,
   orderName,
   orderNumber,
   orderStatus,
+  orderImage
 }: OrderCardProps) => {
   // essa variant é pra mudar o card visualmente, mas o status e outras infos tem que vir do back
   const [variant, setVariant] = useState<VariantTypes>("red");
@@ -55,6 +67,11 @@ const OrderCard = ({
   const [latitude, setLatitude] = useState<number>(0);
   const [longitude, setLongitude] = useState<number>(0);
   const cameraRef = useRef<Camera>(null);
+  const [items, setItems] = useState(getCardInfo());
+
+  useEffect(() => {
+    localStorage.setItem('infoCard', JSON.stringify(items))
+  }, [items]);
 
   // fazer o uso da imagem
   console.log(image);
@@ -87,6 +104,14 @@ const OrderCard = ({
     }
   }
 
+  const infoCard = {
+    orderId,
+    orderName,
+    orderNumber,
+    orderStatus,
+    orderImage
+  };
+
   function updateCard() {
     if (variant === "red") {
       setIsOpen(true);
@@ -111,6 +136,8 @@ const OrderCard = ({
           setImage(photo.uri);
           setOrderDown();
           setVariant("green");
+          infoCard['orderImage'] = photo.uri;
+          setItems([...items, infoCard]);
 
           return photo;
         }
